@@ -23,6 +23,12 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',TemplateView.as_view(template_name="index.html")),
     path('HomePage/',views.HomePage),
-    path('DefenceMinistry/',views.DefenceMinistry),
-    path('Agent/',views.Agent),
+    path('DefenceMinistry/',views.DefenceMinistrylogin),
+    path('DefeneceMinistryRegister/',views.DefenceMinistryRegister),
+    path('Agent/',views.AgentLogin),
+    path('AgentRegister/',views.AgentRegister),
+    path('RegisterAgent/', views.RegisterAgent),
+
+    path('RegisterDefence/',views.RegisterDefenceMinistry),
+
 ]

@@ -5,26 +5,28 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
-<body bgcolor="#112288">
+<body>
 
 <table align="center">
-    <th width="100" height="100"><h3>CYBERNETICS PROTECTOR</h3></th>
+    <th width="100" height="100"><h3>Ministry of Degence</h3></th>
 
 
     <tr aria-rowspan="5">
-        <td align="center" width="200" height="150">
-            <img src="{%static 'images/images.jpg'%}">
+        <td align="center">
+            <img src="{%static 'images/download.jpg'%}" width="200" height="150">
+            <marquee><h2>INDIA</h2></marquee>
         </td>
     </tr>
+</table>
     <table align="center" border="2">
-         <tr aria-colspan="6">
+         <tr aria-colspan="3">
              <th width="150" bgcolor="#faf0e6"><a href="/HomePage/?type=Home" >HOME</a></th>
-             <th width="150" bgcolor="#00ffff"><a href="/DefenceMinistry/?type=H_DefenceMinistry">DEFENCEMINISTRY</a></th>
-             <th width="150" bgcolor="#ff6347"><a href="/Agent/?H_Agent">AGENT</a></th>
-             <th width="150" bgcolor="#fffafa"><a href="//">AGENTE APPOINTMENT</a></th>
-             <th width="150" bgcolor="#20b2aa"><a href="//">ABOUT US</a></th>
-             <th width="150" bgcolor="#faf0e6"><a href="//">ADMIN</a></th>
+             <th width="150" bgcolor="#ff6347"><a href="/DefenceMinistry/?type=H_DefenceMinistry">DefenceMinistry</a></th>
+             <th width="150" bgcolor="#ff6347"><a href="/Agent/?type=H_Agent">AGENT</a></th>
+             <th width="150" bgcolor="#faf0e6"><a href="/admin/">ADMIN</a></th>
         </tr>
+    </table>
+   {% if type == "Home" %}
         <table align="center" width="1000" height="50" font_size="450" bgcolor="#00ffff">
             <tr>
             <td align="center">
@@ -48,10 +50,78 @@ data transfer between the agents and higher authorities
 need to be protected.
             </td>
             </tr>
-        </table>
 
-    </table>
+
+
 </table>
+{% endif %}
+
+{% if type == "H_DefenceMinistry" %}
+        <form action="//" method="post">
+            {% csrf_token %}
+        <table align="center" border="0">
+            <tr><th height="50" width="200"> DefeneceMinistry Login Page </th></tr>
+            <tr><th height="50" width="200"> <input type="text" placeholder="Username" required name="D_uname"> </th></tr>
+            <tr><th height="50" width="200"> <input type="password" placeholder="Password" required name="D_pass"> </th></tr>
+            <tr><th height="50" width="200"> <input type="submit" value="Login"> </th></tr>
+            <tr><th>
+                <a href="/DefeneceMinistryRegister/?type=H_DefenceMinistry_register">
+                    DefenceMinistry Register
+                </a>
+            </th>
+            </tr>
+        </table>
+        </form>
+        {% endif %}
+
+{% if type == "H_DefenceMinistry_register" %}
+    <form action="/RegisterDefence/" method="post">
+    {% csrf_token %}
+    <table align="center" border="0">
+        <th>DefenceMinistryRegister</th>
+        <tr><th width="200"><input type="text" placeholder="username" name="D_name" required></th></tr>
+         <tr><th width="200"><input type="number" placeholder="userage" name="D_age" required></th></tr>
+        <tr><th width="200"><input type="number" placeholder="usercno" name="D_cno" required></th></tr>
+        <tr><th width="200"><input type="email" placeholder="email" name="D_email" required></th></tr>
+         <tr><th width="200"><input type="password" placeholder="password" name="D_pass" required></th></tr>
+         <tr><th width="200"><input type="submit" value="Register"></th></tr>
+    </table>
+    </form>
+{% endif %}
+
+{% if type == "H_Agent" %}
+    <form action="//" method="post">
+    {% csrf_token %}
+        <table align="center" border="0">
+             <tr><th height="50" width="200"> Agent Login Page </th></tr>
+            <tr><th height="50" width="200"> <input type="text" placeholder="Username" required name="A_uname"> </th></tr>
+            <tr><th height="50" width="200"> <input type="password" placeholder="Password" required name="A_pass"> </th></tr>
+            <tr><th height="50" width="200"> <input type="submit" value="Login"> </th></tr>
+            <tr><th>
+                <a href="/AgentRegister/?type=H_Agent_register">
+                     Agent Register
+                </a>
+            </th>
+            </tr>
+        </table>
+    </form>
+{% endif %}
+{% if type == "H_Agent_register" %}
+    <form action="/RegisterAgent/" method="post">
+    {% csrf_token %}
+    <table align="center" border="0">
+        <th>AgentRegister</th>
+        <tr><th width="200"><input type="text" placeholder="name" name="A_name" required></th></tr>
+         <tr><th width="200"><input type="number" placeholder="age" name="A_age" required></th></tr>
+          <tr><th width="200"><input type="number" placeholder="cno" name="A_cno" required></th></tr>
+         <tr><th width="200"><input type="email" placeholder="email" name="A_email" required></th></tr>
+         <tr><th width="200"><input type="password" placeholder="password" name="A_pass" required></th></tr>
+         <tr><th width="200"><input type="submit" value="Register"></th></tr>
+    </table>
+    </form>
+{% endif %}
+
+
 
 </body>
 </html>
